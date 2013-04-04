@@ -56,10 +56,7 @@ public class StargateTE extends BaseTileEntity {
 		}
 		if(wormholeTimer != -1){
 			if(wormholeTimer == 0){
-				hasWormhole = false;
-				canTeleport = false;
-				destD = destX = destY = destZ = 0;
-				updateClients();
+				closeWormhole();
 			}
 			wormholeTimer--;
 		}
@@ -85,6 +82,14 @@ public class StargateTE extends BaseTileEntity {
 			destY = destination.getY();
 			destZ = destination.getZ();
 		}
+		updateClients();
+	}
+	
+	public void closeWormhole() {
+		hasWormhole = false;
+		canTeleport = false;
+		wormholeTimer = -1;
+		destD = destX = destY = destZ = 0;
 		updateClients();
 	}
 	
